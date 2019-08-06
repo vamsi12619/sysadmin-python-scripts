@@ -13,11 +13,9 @@ sc = slack.WebClient(slackToken)
 def checkPing(host):
     response = os.system('ping -c 3 ' + host + ' >/dev/null 2>&1')
     
-    if response == 0:
-        print('Host is up') 
-        sc.chat_postMessage(channel='#your-channel-here', text='Host is up')
+    if response != 0:
+        sc.chat_postMessage(channel='#your-channel-here', text=':exclamation: DISASTER: Host ' + host + ' is currently offline! :exclamation:')
     else:
-        print('Host is down')
-        sc.chat_postMessage(channel='#your-channel-here', text='Host is down')
+        sc.chat_postMessage(channel='#your-channel-here', text=':white_check_mark: OK: Host ' + host + ' seems to be running smoothly! :slightly_smiling_face:')
 
 checkPing(str(sys.argv[1]))
