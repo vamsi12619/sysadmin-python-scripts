@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 # Basic python script to check if a host is up
 # and send a message through Slack
-# it can be put inside cron to run automatically
+# It takes one argument (eg. one host) and it can be put inside cron to run automatically
 
 import os
 import sys
